@@ -1,14 +1,18 @@
 import { h, app } from 'hyperapp'
-import { div, h1 } from '@hyperapp/html'
+import { div, h1, h2 } from '@hyperapp/html'
 
 app({
-  init: () => ({}), // we don't have a state here
-  view: () => (
-    div({ class: 'pure-javascript' },
-      [ h1({}, "This was added with pure javascript, check me out!")
-      ]
-    )
-  ),
+	init: () => ({
+		word: 'application',
+		guesses: [],
+	}), // we don't have a state here
+	view: (state) => (
+		div({},
+			[ h1({}, state.word)
+			, h2({}, 'Your Guesses:')
+			]
+		)
+	),
   node: document.getElementById('app')
 })
 
