@@ -1,0 +1,10 @@
+{
+  "name": "hyperapp-hangman",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@hyperapp/html": "^1.1.1",
+    "hyperapp": "^2.0.0-beta.22"
+  }
+}
