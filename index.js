@@ -16,6 +16,14 @@ const mdash = "\u2014";
 
 // VIEWS
 
+const Word = (state) =>  (
+  h1({}, state.word.map(letter => WordLetter(letter, isGuessed(letter, state))))
+)
+
+const WordLetter = (letter, guessed) => (
+  span({ class: 'letter' }, guessed ? letter : mdash)
+)
+
 // THE APP
 
 app({
@@ -25,7 +33,7 @@ app({
 	}),
 	view: (state) => (
 		div({},
-			[ h1({}, state.word.map(letter => span({class: 'letter'}, isGuessed(letter, state) ? letter : mdash)))
+			[ Word(state)
 			, h2({}, 'Incorrect Guesses:')
 				, ul({ class: 'guesses' },
           state.guesses.filter(guess => !isInWord(guess, state)).map(guess => 
