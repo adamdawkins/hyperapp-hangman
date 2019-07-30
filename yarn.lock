@@ -2,12 +2,48 @@
 # yarn lockfile v1
 
 
+"@hyperapp/events@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@hyperapp/events/-/events-0.0.1.tgz#a35a2b18dc39209388ac93e0e6e578d7b956e0cf"
+  integrity sha512-Ig/zAT3DBac4Mi7mwfy7kX4RloTlBZkTxwVvt2Fmu9K4hQlHk+A4lCId8dBFpU9NVUJiYNMp3oyeuu5l1hqxbQ==
+
 "@hyperapp/html@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@hyperapp/html/-/html-1.1.1.tgz#8040666e8f935eed95f2034f443cc8768866d992"
   integrity sha512-jRlz/ED0y/pAseqAwKlJxdy78Lf7AEeykOGeYxnGE1TY0tF4SgVW53Sh72QJoGWZmrgtcHN6wKPZAmEenDCsgQ==
 
+babel-plugin-syntax-object-rest-spread@^6.8.0:
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-syntax-object-rest-spread/-/babel-plugin-syntax-object-rest-spread-6.13.0.tgz#fd6536f2bce13836ffa3a5458c4903a597bb3bf5"
+  integrity sha1-/WU28rzhODb/o6VFjEkDpZe7O/U=
+
+babel-plugin-transform-object-rest-spread@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.26.0.tgz#0f36692d50fef6b7e2d4b3ac1478137a963b7b06"
+  integrity sha1-DzZpLVD+9rfi1LOsFHgTepY7ewY=
+  dependencies:
+    babel-plugin-syntax-object-rest-spread "^6.8.0"
+    babel-runtime "^6.26.0"
+
+babel-runtime@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
+
+core-js@^2.4.0:
+  version "2.6.9"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
+  integrity sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
+
 hyperapp@^2.0.0-beta.22:
   version "2.0.0-beta.22"
   resolved "https://registry.yarnpkg.com/hyperapp/-/hyperapp-2.0.0-beta.22.tgz#2e5ab48e8ab5718b83823ceb42bcdf60defd7ad2"
   integrity sha512-vs+uG4LXKaUgw6mOjB/PfkBD8WAsBULJNKXIHgjP2sdB8CRXUiCJM2BEtSIXkW0OvqHDMRaFbeo6oHi+W69JNg==
+
+regenerator-runtime@^0.11.0:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+  integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==

@@ -1,5 +1,6 @@
 import { h, app } from 'hyperapp'
-import { div, h1, h2, ul, li, span } from '@hyperapp/html'
+import { preventDefault, targetValue } from "@hyperapp/events"
+import { div, h1, h2, ul, li, span, input, label, form, button } from '@hyperapp/html'
 
 const mdash = "\u2014"
 const MAX_BAD_GUESSES = 7
@@ -35,6 +36,18 @@ const isGameOver = state => badGuesses(state).length >= MAX_BAD_GUESSES
 
 // ACTIONS
 
+const GuessLetter = (state) => ({
+		...state, 
+			guesses: state.guesses.concat([state.guessedLetter]),
+			guessedLetter: '',
+	})
+
+const SetGuessedLetter = (state, letter)  => ({
+		...state, 
+			guessedLetter: letter,
+})
+
+
 // VIEWS
 
 const Word = (state) =>  (
@@ -53,31 +66,47 @@ const BadGuesses = (state) => (
   ]
 )
 
+const UserInput = (letter) => (
+	form({ onSubmit: preventDefault(GuessLetter) },
+    [ label({}, 'Your guess:'),
+			, input({ value: letter
+							, type: 'text'
+              , maxlength: 1
+							, class: 'input'
+							, onInput: [SetGuessedLetter, targetValue]
+              })
+      , button({ type: 'submit'}, "Guess!")
+    ]
+  )
+)
+
 // THE APP
 
 app({
-	init: () => ({
+	init: {
 		word: 'application'.split(''),
-		guesses: ['a', 'p', 'l', 'i', 'c', 't', 'o', 'n'],
+		guesses: [],
+		guessedLetter: '',
     maxBadGuesses: 7,
-	}),
-	view: (state) => (
+	},
+	view: (state) => ( 
 		div({},
-      isGameOver(state)
-      ? 
-      h1({}, `Game Over! The word was "${state.word.join('')}"`)
-      :
-      (
-      isVictorious(state)
-      ?
-      [ h1({}, "You Won!"),
-        Word(state)
-      ]
-      :
-			[ Word(state)
-      , BadGuesses(state)
-			]
-      )
+			isGameOver(state)
+			? 
+			h1({}, `Game Over! The word was "${state.word.join('')}"`)
+			:
+			(
+				isVictorious(state)
+				?
+				[ h1({}, "You Won!"),
+					Word(state)
+				]
+				:
+				[ UserInput(state.guessedLetter),
+					, Word(state),
+					, BadGuesses(state)
+				]
+			)
 		)
 	),
   node: document.getElementById('app')
