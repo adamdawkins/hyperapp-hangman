@@ -116,7 +116,7 @@ app({
         ? h1({}, `Game Over! The word was "${state.word.join("")}"`)
         : isVictorious(state)
         ? [h1({}, "You Won!"), Word(state)]
-        : [UserInput(state.guessedLetter), , Word(state), , BadGuesses(state)]
+        : [UserInput(state.guessedLetter), Word(state), BadGuesses(state)]
     ),
   node: document.getElementById("app")
 })
