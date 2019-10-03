@@ -6,6 +6,7 @@
   "dependencies": {
     "@hyperapp/events": "^0.0.1",
     "@hyperapp/html": "^1.1.1",
+    "@hyperapp/random": "^0.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "hyperapp": "^2.0.0-beta.22"
   }

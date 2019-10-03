@@ -1,6 +1,8 @@
 import { h, app } from 'hyperapp'
 import { preventDefault, targetValue } from "@hyperapp/events"
 import { div, h1, h2, ul, li, span, input, label, form, button } from '@hyperapp/html'
+import { generate, number } from '@hyperapp/random'
+import WORDS from './words'
 
 const mdash = "\u2014"
 const MAX_BAD_GUESSES = 7
@@ -32,6 +34,12 @@ const isVictorious = state => all(state.word.map(letter => isGuessed(letter, sta
 const isGameOver = state => badGuesses(state).length >= MAX_BAD_GUESSES
 
 
+// EFFECTS
+
+const getRandomWord = (words, action) =>
+  generate(action, number(rand => words[Math.floor(rand * words.length)]))
+
+
 
 
 // ACTIONS
@@ -46,6 +54,8 @@ const SetGuessedLetter = (state, letter)  => ({
 		...state, 
 			guessedLetter: letter,
 })
+
+const SetWord = (state, word) => ({ ...state, word: word.split('') })
 
 
 // VIEWS
@@ -83,12 +93,12 @@ const UserInput = (letter) => (
 // THE APP
 
 app({
-	init: {
-		word: 'application'.split(''),
+	init: [{
+		word: [],
 		guesses: [],
 		guessedLetter: '',
     maxBadGuesses: 7,
-	},
+	}, getRandomWord(WORDS, SetWord)],
 	view: (state) => ( 
 		div({},
 			isGameOver(state)
